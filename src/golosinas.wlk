@@ -7,18 +7,33 @@ object vainilla { }
 object naranja { }
 object limon { }
 
+class Golosina{
+	var property peso
+	var property precio
+	method libreGluten() = true
+	
+	
+}
+
+class BombonDuro inherits Bombon{
+	
+	method gradoDeDureza(){
+		
+	}
+	override method mordisco(){peso -= 1}
+	
+}
 
 /*
  * Golosinas
  */
-class Bombon {
-	var peso = 15
+class Bombon inherits Golosina(precio = 5){
 	
-	method precio() { return 5 }
-	method peso() { return peso }
+	method initialize(){
+		 peso = 15
+	}
 	method mordisco() { peso = peso * 0.8 - 1 }
 	method sabor() { return frutilla }
-	method libreGluten() { return true }
 }
 
 
@@ -32,14 +47,11 @@ class Alfajor {
 	method libreGluten() { return false }
 }
 
-class Caramelo {
-	var peso = 5
-
-	method precio() { return 12 }
-	method peso() { return peso }
+class Caramelo inherits Golosina(peso = 5, precio = 12){
+	
 	method mordisco() { peso = peso - 1 }
 	method sabor() { return frutilla }
-	method libreGluten() { return true }
+
 }
 
 
@@ -109,7 +121,7 @@ class GolosinaBaniada {
 
 class Tuttifrutti {
 	var libreDeGluten
-	var sabores = [frutilla, chocolate, naranja]
+	const sabores = [frutilla, chocolate, naranja]
 	var saborActual = 0
 	
 	method mordisco() { saborActual += 1 }	

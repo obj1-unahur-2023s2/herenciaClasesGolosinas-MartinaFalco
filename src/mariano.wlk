@@ -1,7 +1,7 @@
 import golosinas.*
 
 object mariano {
-	var golosinas = []
+	const golosinas = []
 	 
 	method comprar(_golosina) { golosinas.add(_golosina) }
 	
@@ -44,8 +44,6 @@ object mariano {
 	method sabores() {
 		return golosinas.map({ golosina => golosina.sabor() }).asSet()
 	}
-
-
 
 	method golosinaMasCara() {
 		return golosinas.max( { _golosina => _golosina.precio() } )
